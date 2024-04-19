@@ -5,5 +5,6 @@ namespace WebApi.Controllers;
 public interface IRabbitMQConsumerController
 {
     void StartConsuming();
+    void ConfigQueue(string queueName);
     void StopConsuming();
 }

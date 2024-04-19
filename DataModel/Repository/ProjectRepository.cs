@@ -57,13 +57,13 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
     {
         try {
             ProjectDataModel projectDataModel = _projectMapper.ToDataModel(project);
-
+    
             EntityEntry<ProjectDataModel> projectDataModelEntityEntry = _context.Set<ProjectDataModel>().Add(projectDataModel);
             
             await _context.SaveChangesAsync();
-
+    
             ProjectDataModel projectDataModelSaved = projectDataModelEntityEntry.Entity;
-
+    
             Project projectSaved = _projectMapper.ToDomain(projectDataModelSaved);
             
             return projectSaved;    
@@ -73,19 +73,19 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
             throw;
         }
     }
-
+    
     public async Task<Project> Update(Project project, List<string> errorMessages)
     {
         try {
             ProjectDataModel projectDataModel = await _context.Set<ProjectDataModel>()
                     .FirstAsync(c => c.Id == project.Id);
-
+    
             _projectMapper.UpdateDataModel(projectDataModel, project);
-
+    
             _context.Entry(projectDataModel).State = EntityState.Modified;
-
+    
             await _context.SaveChangesAsync();
-
+    
             return project;
         }
         catch (DbUpdateConcurrencyException)
@@ -100,7 +100,7 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
             {
                 throw;
             }
-
+    
             return null;
         }
         catch
@@ -108,7 +108,7 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
             throw;
         }
     }
-
+    
     public async Task<bool> ProjectExists(long id, string name)
     {
         return await _context.Set<ProjectDataModel>().AnyAsync(e => e.Id == id || e.Name == name);

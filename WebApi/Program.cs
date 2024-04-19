@@ -10,6 +10,10 @@ using WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var config = builder.Configuration;
+var projectQueueName = config["ProjectQueues:" + args[0]];
+var projectUpdateQueueName = config["ProjectUpdateQueues:" + args[0]];
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -43,14 +47,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
 builder.Services.AddTransient<IProjectFactory, ProjectFactory>();
 builder.Services.AddTransient<ProjectMapper>();
-// builder.Services.AddTransient<ProjectService>();
+builder.Services.AddTransient<ProjectService>();
+builder.Services.AddTransient<ProjectGatewayUpdate>();
 builder.Services.AddTransient<ProjectGateway>();
-builder.Services.AddTransient<ProjectAMQPService>();
 
 builder.Services.AddScoped<ProjectService>();
-// builder.Services.AddScoped<RabbitMQConsumerController>();
 
 builder.Services.AddSingleton<IRabbitMQConsumerController, RabbitMQConsumerController>();
+builder.Services.AddSingleton<IRabbitMQConsumerUpdateController, RabbitMQConsumerUpdateController>();
 
 var app = builder.Build();
 
@@ -66,7 +70,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 var rabbitMQConsumerService = app.Services.GetRequiredService<IRabbitMQConsumerController>();
+rabbitMQConsumerService.ConfigQueue(projectQueueName);
 rabbitMQConsumerService.StartConsuming();
+
+var rabbitMQConsumerUpdateService = app.Services.GetRequiredService<IRabbitMQConsumerUpdateController>();
+rabbitMQConsumerUpdateService.ConfigQueue(projectUpdateQueueName);
+rabbitMQConsumerUpdateService.StartConsuming();
 
 app.MapControllers();
 

@@ -24,7 +24,7 @@ public class ProjectController : Controller
         IEnumerable<ProjectDTO> projectsDTO = await _projectService.GetAll();
         return Ok(projectsDTO);
     }
-
+    //
     [HttpGet("{id}")]
     public async Task<ActionResult<ProjectDTO>> GetProjectById(long id)
     {
@@ -33,38 +33,38 @@ public class ProjectController : Controller
         {
             return Ok(projectDTO);
         }
-
+    
         return NotFound();
     }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutProject(long id, ProjectDTO projectDTO)
-    {
-        if (id != projectDTO.Id)
-        {
-            return BadRequest();
-        }
-
-        bool wasUpdated = await _projectService.Update(id, projectDTO, _errorMessages);
-        if (!wasUpdated)
-        {
-            return BadRequest(_errorMessages);
-        }
-
-        return Ok();
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<IEnumerable<ProjectDTO>>> PostProject(ProjectDTO projectDTO)
-    {
-        ProjectDTO projectResultDTO = await _projectService.Add(projectDTO, _errorMessages, true);
-        if (projectResultDTO is not null)
-        {
-            return CreatedAtAction(nameof(GetProjectById), new { id = projectDTO.Id }, projectResultDTO);
-        }
-        else
-        {
-            return BadRequest(_errorMessages);
-        }
-    }
+    
+    // [HttpPut("{id}")]
+    // public async Task<IActionResult> PutProject(long id, ProjectDTO projectDTO)
+    // {
+    //     if (id != projectDTO.Id)
+    //     {
+    //         return BadRequest();
+    //     }
+    //
+    //     bool wasUpdated = await _projectService.Update(id, projectDTO, _errorMessages, true);
+    //     if (!wasUpdated)
+    //     {
+    //         return BadRequest(_errorMessages);
+    //     }
+    //
+    //     return Ok();
+    // }
+    //
+    // [HttpPost]
+    // public async Task<ActionResult<IEnumerable<ProjectDTO>>> PostProject(ProjectDTO projectDTO)
+    // {
+    //     ProjectDTO projectResultDTO = await _projectService.AddFromRest(projectDTO, _errorMessages);
+    //     if (projectResultDTO is not null)
+    //     {
+    //         return Created("", projectResultDTO);
+    //     }
+    //     else
+    //     {
+    //         return BadRequest(_errorMessages);
+    //     }
+    // }
 }

@@ -12,8 +12,7 @@ namespace Application.DTO
         public DateOnly? EndDate { get; set; }
 
         public ProjectGatewayDTO()
-        {
-        }
+        { }
 
         public ProjectGatewayDTO( long id, string name, DateOnly startDate, DateOnly? endDate)
         {
