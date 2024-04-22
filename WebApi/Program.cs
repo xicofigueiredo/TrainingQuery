@@ -10,20 +10,23 @@ using WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// var config = builder.Configuration;
+// var projectQueueName = config["ProjectQueues:" + args[0]];
+// var projectUpdateQueueName = config["ProjectUpdateQueues:" + args[0]];
+
 var config = builder.Configuration;
+var connectionString = config.GetConnectionString("AbsanteeDatabase" + args[0]);
 var projectQueueName = config["ProjectQueues:" + args[0]];
 var projectUpdateQueueName = config["ProjectUpdateQueues:" + args[0]];
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AbsanteeContext>(opt =>
-    //opt.UseInMemoryDatabase("AbsanteeList")
-    //opt.UseSqlite("Data Source=AbsanteeDatabase.sqlite")
-    opt.UseSqlite(Host.CreateApplicationBuilder().Configuration.GetConnectionString("AbsanteeDatabase"))
+    opt.UseSqlite(connectionString)
 );
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
