@@ -20,7 +20,10 @@ public class AbsanteeContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.Entity<ProjectDataModel>()
+            .HasIndex(p => p.Name);
+        // base.OnModelCreating(modelBuilder);
 
         // modelBuilder.Entity<HolidayDataModel>()
         // 	.HasOne(x => x.Colaborator)
