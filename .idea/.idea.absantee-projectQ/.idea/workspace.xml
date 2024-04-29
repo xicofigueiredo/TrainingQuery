@@ -14,15 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4914d486-d6cd-40ae-9010-7dfbc49334ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB1.sqlite-shm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB1.sqlite-wal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB2.sqlite-shm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB2.sqlite-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.absantee-projectQ/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.absantee-projectQ/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataModel/Model/ProjectDataModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataModel/Model/ProjectDataModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataModel/Repository/AbsanteeContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataModel/Repository/AbsanteeContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/AbsanteeDB1.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB1.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/AbsanteeDB2.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/AbsanteeDB2.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,7 +265,7 @@
       <workItem from="1713978018714" duration="1170000" />
       <workItem from="1714120160431" duration="260000" />
       <workItem from="1714388709217" duration="138000" />
-      <workItem from="1714388929362" duration="357000" />
+      <workItem from="1714388929362" duration="2452000" />
     </task>
     <task id="LOCAL-00001" summary="project with DTO">
       <option name="closed" value="true" />
