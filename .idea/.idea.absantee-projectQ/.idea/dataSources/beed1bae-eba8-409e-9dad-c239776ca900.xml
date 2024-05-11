@@ -1590,7 +1590,7 @@
     <argument id="554" parent="190">
       <Position>1</Position>
     </argument>
-    <table id="555" parent="191" name="Projects"/>
+    <table id="555" parent="191" name="Trainings"/>
     <table id="556" parent="191" name="sqlite_master">
       <System>1</System>
     </table>
@@ -1617,7 +1617,7 @@
       <DasType>TEXT|0s</DasType>
       <Position>4</Position>
     </column>
-    <key id="562" parent="555" name="PK_Projects">
+    <key id="562" parent="555" name="PK_Trainings">
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>

@@ -15,13 +15,13 @@ public class AbsanteeContext : DbContext
         Database.EnsureCreated();
     }
 
-    public virtual DbSet<ProjectDataModel> Projects { get; set; } = null!;
+    public virtual DbSet<TrainingDataModel> Trainings { get; set; } = null!;
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         
-        modelBuilder.Entity<ProjectDataModel>()
+        modelBuilder.Entity<TrainingDataModel>()
             .HasIndex(p => p.Name);
         // base.OnModelCreating(modelBuilder);
 

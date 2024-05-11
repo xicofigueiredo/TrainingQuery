@@ -5,21 +5,21 @@ using Microsoft.EntityFrameworkCore;
 namespace DataModel.Model;
 
 [Index(nameof(Name), IsUnique = true)]
-public class ProjectDataModel
+public class TrainingDataModel
 {
     public long Id { get; set; }
     public string Name { get; set; }
     public DateOnly StartDate { get; set; }
     public DateOnly? EndDate { get; set; }
 
-    public ProjectDataModel()
+    public TrainingDataModel()
     { }
 
-    public ProjectDataModel(IProject project)
+    public TrainingDataModel(ITraining training)
     {
-        Id = project.Id;
-        Name = project.Name;
-        StartDate = project.StartDate;
-        EndDate = project.EndDate;
+        Id = training.Id;
+        Name = training.Name;
+        StartDate = training.StartDate;
+        EndDate = training.EndDate;
     }
 }
