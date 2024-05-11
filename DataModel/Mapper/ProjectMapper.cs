@@ -50,8 +50,6 @@ public class ProjectMapper
     {
         projectDataModel.Name = projectDomain.Name;
 
-        // pode ser necessário mais atualizações, e com isso o retorno não ser sempre true
-        // contudo, porque projectDataModel está a ser gerido pelo DbContext, para atualizarmos a DB, é este que tem de ser alterado, e não criar um novo
         projectDataModel.EndDate = projectDomain.EndDate;
         
         return true;
